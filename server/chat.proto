@@ -1,0 +1,29 @@
+﻿syntax = "proto3";
+
+
+package reverse;
+
+
+service ReverseService {
+    rpc ReverseString (ReverseRequest) returns (ReverseReply) {}
+    rpc chat(stream ChatMessage) returns (stream ChatMessageFromServer);
+}
+
+message ChatMessage {
+    string from = 1;
+	string message = 2;
+}
+
+message ChatMessageFromServer
+{
+	ChatMessage message = 2;
+}
+
+
+message ReverseRequest {
+    string data = 1;
+}
+
+message ReverseReply {
+    string reversed = 2;
+}
